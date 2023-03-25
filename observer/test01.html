@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01</title>
+</head>
+
+<body>
+
+  <div class="wrap">
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+
+    <div class="box" data-id="001"></div>
+    <div class="box" data-id="002"></div>
+    <div class="box" data-id="003"></div>
+    <div class="box" data-id="004"></div>
+    <div class="box" data-id="005"></div>
+
+
+  </div>
+  <script>
+
+    const boxes = document.querySelectorAll(".box")
+    const observer = new IntersectionObserver(getId);
+
+    boxes.forEach(function (box) {
+      observer.observe(box);
+    })
+
+    function getId(entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          console.log(entry.target.dataset.id);
+        }
+      })
+    }
+
+
+
+  </script>
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .wrap {
+      width: 500px;
+      margin: 0 auto;
+    }
+
+    .box {
+      background-color: aquamarine;
+      width: 300px;
+      height: 300px;
+      margin: 20px 0;
+    }
+
+    .space {
+      margin-top: 1000px;
+    }
+  </style>
+</body>
+
+</html>
